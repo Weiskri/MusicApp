@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MusicApp.Models.Artist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Artists</h2>
+
+<p>
+    <button type="button" class="btn btn-success">Add Artist<a href="/Artists/Create"> <i class="fas fa-plus-circle"></i></a></button>
+</p>
+
+
+
+@foreach (var item in Model)
+{
+<div class="col-md-4">
+    <ul class="gallery">
+        <li class="artist-gallery">
+                <img src="@Html.DisplayFor(modelItem => item.ArtistPhoto)" /><span class="name">
+    @Html.DisplayFor(modelItem => item.Name)<br />
+    <a href="@Url.Action("Edit", "Artists", new { id = item.ArtistID })" class="fas fa-edit"></a>
+    <a href="@Url.Action("Details", "Artists", new { id = item.ArtistID })" class="fas fa-info-circle"></a>
+    <a href="@Url.Action("Delete", "Artists", new { id = item.ArtistID})" class="fas fa-trash-alt"></a>
+</span>
+    </li>
+</ul>
+</div>
+}
+</div>
